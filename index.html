@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #videoContainer{
+            display: none;
+            margin-top: 20px;
+            margin-left: -10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Virtual Reality Learning Platform</h1>
+    </header>
+    <main>
+        <section class="project">
+            <h2>Certificate</h2>
+            
+            <a href="pdfs/certificate.pdf" target="_blank">View</a>
+        </section>
+        <section class="project">
+            <h2>Human Anatomy</h2>
+            
+            <!-- <a href="video/humananotomy.mp4" target="_blank">View</a> -->
+
+            <a href="#" class="viewLink" data-video="videoContainer">View</a>
+            <div id="videoContainer">
+                <video width="320" height="240" controls>
+                    <source src="video/humananotomy.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+      
+    </main>
+    <script>
+        document.querySelectorAll('.viewLink').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const videoId = this.getAttribute('data-video');
+                const videoContainer = document.getElementById(videoId);
+                videoContainer.style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
