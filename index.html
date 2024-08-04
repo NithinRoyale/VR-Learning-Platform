@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        #videoContainer {
+        .videoContainer {
             display: none;
             position: relative;
             margin-top: 20px;
@@ -20,13 +20,13 @@
             margin: 20px auto;
         }
 
-        #videoContainer iframe {
+        .videoContainer iframe {
             width: 100%;
             height: 215px;
             border-radius: 10px;
         }
 
-        #closeButton {
+        .closeButton {
             position: absolute;
             top: -10px;
             right: -10px;
@@ -40,7 +40,7 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         }
 
-        #closeButton:hover {
+        .closeButton:hover {
             background: #ff1a1a;
         }
     </style>
@@ -51,14 +51,22 @@
     </header>
     <main>
         <section class="project">
+            <h2>Solar System Exploration</h2>
+            <a href="#" class="viewLink" data-video-url="https://www.youtube.com/embed/wL-vqUVeGCg?si=j8U1D8JS8priB2tl" data-container-id="solarSystemVideoContainer">View</a>
+            <div id="solarSystemVideoContainer" class="videoContainer">
+                <button class="closeButton">&times;</button>
+                <iframe src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section class="project">
             <h2>Certificate</h2>
             <a href="pdfs/certificate.pdf" target="_blank">View</a>
         </section>
         <section class="project">
-            <h2>Human Anatomy</h2>
-            <a href="#" class="viewLink" data-video-url="https://www.youtube.com/embed/IT7-g-1cxQ8?si=qC80ohxYP6eBWBIO">View</a>
-            <div id="videoContainer">
-                <button id="closeButton">&times;</button>
+            <h2>Human Anatomy Study</h2>
+            <a href="#" class="viewLink" data-video-url="https://www.youtube.com/embed/IT7-g-1cxQ8?si=qC80ohxYP6eBWBIO" data-container-id="humanAnatomyVideoContainer">View</a>
+            <div id="humanAnatomyVideoContainer" class="videoContainer">
+                <button class="closeButton">&times;</button>
                 <iframe src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </section>
@@ -68,18 +76,21 @@
             link.addEventListener('click', function(event) {
                 event.preventDefault();
                 const videoUrl = this.getAttribute('data-video-url');
-                const videoContainer = document.getElementById('videoContainer');
+                const containerId = this.getAttribute('data-container-id');
+                const videoContainer = document.getElementById(containerId);
                 const iframe = videoContainer.querySelector('iframe');
                 iframe.src = videoUrl;
                 videoContainer.style.display = 'block';
             });
         });
 
-        document.getElementById('closeButton').addEventListener('click', function() {
-            const videoContainer = document.getElementById('videoContainer');
-            const iframe = videoContainer.querySelector('iframe');
-            iframe.src = ''; // Stop the video
-            videoContainer.style.display = 'none';
+        document.querySelectorAll('.closeButton').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const videoContainer = this.closest('.videoContainer');
+                const iframe = videoContainer.querySelector('iframe');
+                iframe.src = ''; // Stop the video
+                videoContainer.style.display = 'none';
+            });
         });
     </script>
 </body>
