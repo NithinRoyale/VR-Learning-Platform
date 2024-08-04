@@ -10,8 +10,38 @@
     <style>
         #videoContainer {
             display: none;
+            position: relative;
             margin-top: 20px;
-            margin-left: -10px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+
+        #videoContainer iframe {
+            width: 100%;
+            height: 215px;
+            border-radius: 10px;
+        }
+
+        #closeButton {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #closeButton:hover {
+            background: #ff1a1a;
         }
     </style>
 </head>
@@ -26,12 +56,10 @@
         </section>
         <section class="project">
             <h2>Human Anatomy</h2>
-            <a href="#" class="viewLink" data-video="videoContainer">View</a>
+            <a href="#" class="viewLink" data-video-url="https://www.youtube.com/embed/IT7-g-1cxQ8?si=qC80ohxYP6eBWBIO">View</a>
             <div id="videoContainer">
-                <video width="320" height="240" controls>
-                    <source src="video/humananotomy.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <button id="closeButton">&times;</button>
+                <iframe src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </section>
     </main>
@@ -39,15 +67,19 @@
         document.querySelectorAll('.viewLink').forEach(function(link) {
             link.addEventListener('click', function(event) {
                 event.preventDefault();
-                const videoId = this.getAttribute('data-video');
-                const videoContainer = document.getElementById(videoId);
+                const videoUrl = this.getAttribute('data-video-url');
+                const videoContainer = document.getElementById('videoContainer');
+                const iframe = videoContainer.querySelector('iframe');
+                iframe.src = videoUrl;
                 videoContainer.style.display = 'block';
-                // Check if the video element is correctly referenced
-                const videoElement = videoContainer.querySelector('video');
-                if (videoElement) {
-                    videoElement.play();
-                }
             });
+        });
+
+        document.getElementById('closeButton').addEventListener('click', function() {
+            const videoContainer = document.getElementById('videoContainer');
+            const iframe = videoContainer.querySelector('iframe');
+            iframe.src = ''; // Stop the video
+            videoContainer.style.display = 'none';
         });
     </script>
 </body>
