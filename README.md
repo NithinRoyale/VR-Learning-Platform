@@ -1,5 +1,5 @@
 
-Hosted Link:
+
 
 
 # Virtual Reality Learning Platform
