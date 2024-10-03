@@ -1,7 +1,5 @@
 
 
-
-
 # Virtual Reality Learning Platform
 
 This project introduces an innovative VR educational platform tailored for industries, offering immersive training for employees and educational experiences for students. Leveraging the capabilities of Unreal Engine 5, we develop a versatile virtual environment that facilitates exploration and learning.
@@ -29,8 +27,6 @@ You can access the hosted version of the VR Learning Platform [VR Learning Platf
 ### 5. Accessible and Scalable
 - Ensures accessibility for users with disabilities and scalability for different age groups and learning styles.
 
-### 6. Gamification Elements
-- Integrates gamification to enhance user engagement and motivation.
 
 ## Technologies Used
 - Unreal Engine 5
@@ -94,3 +90,4 @@ Our VR learning platform is designed for primary school students, from 1st to 5t
 ## Contributors
 
 - [Nithin](https://github.com/NithinRoyale/)
+- [Rishi Khanna](https://github.com/DarkParasite/)
